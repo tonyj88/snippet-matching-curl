@@ -70,7 +70,7 @@ unset BEARER BLACKDUCK_API_TOKEN
 
 The commands use `curl.exe`, because `curl` in Windows PowerShell is an alias for a different command. Run these steps in order in the same PowerShell window.
 
-**Step 1.** Set your server URL and the file to check. Replace the server URL first. Then type the token at the `API token` prompt and press Enter. The token is not shown while you type.
+**Step 1.** Set your server URL and the file to check. Replace the server URL first.
 
 ```powershell
 $env:BLACKDUCK_URL = 'https://your-blackduck-server'
@@ -78,6 +78,8 @@ $file = 'samples\DeserializationTask.java'
 $secret = Read-Host 'API token' -AsSecureString
 $env:BLACKDUCK_API_TOKEN = [System.Net.NetworkCredential]::new('', $secret).Password
 ```
+
+The third line does not ask for your token yet. It shows the prompt text `API token` and waits. **Do not replace `'API token'` with your token.** Leave the command as written, press Enter, and then paste your token at the prompt. The token is not shown while you type or paste, and nothing appears after you press Enter. The fourth line then reads the token into `$env:BLACKDUCK_API_TOKEN`.
 
 **Step 2.** Exchange the API token for a bearer token. If the status is not 200, the error body is printed.
 
